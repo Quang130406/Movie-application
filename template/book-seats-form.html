@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Book Seats</title>
+        <style>
+ html {
+ height: 100%;
+ }
+ body {
+ margin: 0;
+ /* padding:0;
+ background: 
+url("https://cdn.pixabay.com/photo/2018/02/27/15/40/backgroun
+d-3185765_1280.jpg"); */
+ /* background: 
+url("https://cdn.pixabay.com/photo/2015/05/13/07/07/playmobil
+-765110_1280.jpg"); */
+ background: 
+url("https://cdn.pixabay.com/photo/2017/01/12/17/30/warm-andcozy-1975215_1280.jpg");
+ background-attachment: fixed;
+ background-position: relative;
+ background-repeat: no-repeat;
+ background-size: cover;
+ }.login-box {
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ width: 400px;
+ padding: 50px;
+ transform: translate(-50%, -50%);
+ background: rgba(16, 15, 15, 0.5);
+ box-sizing: border-box;
+ box-shadow: 0 15px 25px rgba(80, 80, 80, 0.5);
+ border-radius: 10px;
+ }
+ .login-box h2 {
+ margin: 0 0 30px;
+ padding: 0;
+ color: #f3eff2;
+ text-align: center;
+ }
+ .login-box .user-box {
+ position: relative;
+ }
+ .login-box .user-box input {
+ width: 100%;
+ padding: 10px 0;
+ font-size: 20px;
+ color: #fff;
+ margin-bottom: 30px;
+ border: none;
+ border-bottom: 1px solid #fff;
+ outline: none;
+ background: transparent;
+ }
+ .login-box .user-box label {
+ position: absolute;
+ top: 0;
+ left: 0;
+ padding: 10px 0;
+ font-size: 16px;
+ color: #fff;
+ pointer-events: none;
+ transition: 0.5s;
+ }
+ .login-box .user-box input:focus ~ label,
+ .login-box .user-box input:valid ~ label {
+ top: -20px;
+ left: 0;color: #f9f9f9;
+ font-size: 15px;
+ }
+ .login-box-button {
+ position: relative;
+ display: inline-block;
+ padding: 10px 20px;
+ color: #f8f5f6;
+ font-size: 16px;
+ text-decoration: none;
+ text-transform: uppercase;
+ overflow: hidden;
+ transition: 0.5s;
+ margin-top: 40px;
+ letter-spacing: 4px;
+ background: #520306;
+ border-radius: 5px;
+ box-shadow: 0 0 5px #520306, 0 0 25px #520306, 0 0 
+50px #520306,
+ 0 0 100px #520306;
+ }
+ .login-box-button:hover {
+ background: #fff;
+ color: #520340;
+ }
+ /*Category button action, comedy and drama*/
+ .button {
+ background-color: #000;
+ border: 0.5px solid crimson;
+ border-radius: 10px;
+ color: #fff;
+ padding: 8px;
+ font-size: 20px;
+ cursor: pointer; /* Pointer/hand icon */
+ /* display:block; */
+ }
+ .movie-details-box {
+ margin-top: 20px;
+ padding: 20px;
+ background-color: rgba(0, 0, 0, 0.8);
+ color: white;
+ border-radius: 10px;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+ display: none; /* Initially hide the box */
+ }.movie-category-box {
+ margin: 0 auto; /* Center horizontally */
+ margin-top: 20px;
+ padding: 20px;
+ background-color: rgba(0, 0, 0, 0.8);
+ color: white;
+ border-radius: 10px;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+ display: none; /* Initially hide the box */
+ }
+ .button.action-button {
+ background-color: #8b0000;
+ border: 3px solid black;
+ cursor: pointer;
+ }
+ .button.comedy-button {
+ background-color: #8b0000;
+ border: 3px solid black;
+ cursor: pointer;
+ }
+ .button.drama-button {
+ background-color: #8b0000;
+ border: 3px solid black;
+ cursor: pointer;
+ }
+ /* Style for movie list items */
+ #movie-category ul {
+ list-style-type: none;
+ padding: 0;
+ }
+ #movie-category ul li {
+ cursor: pointer;
+ margin-bottom: 5px; /* Adjust as required */
+ /* background-color: #8fa5ac; */
+ }
+ .container {
+ top: 40%; /*Display category buttons from top*/
+ left: 20%;
+ width: 20em; /*width of the black box*/
+ height: 18em;
+ transform: translate(-50%, -50%);
+ position: fixed;
+ color: rgb(255, 255, 255);
+ font-size: 20px;
+ cursor: pointer;}
+ </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Movie List</h2>
+            <div id="movie-list"></div>
+            <div class="button-group">
+                <button class="button action-button"
+                    onclick="getMovies('Action')">
+                    Action
+                </button>
+                <button class="button comedy-button"
+                    onclick="getMovies('Comedy')">
+                    Comedy
+                </button>
+                <button class="button drama-button"
+                    onclick="getMovies('Drama')">
+                    Drama
+                </button>
+            </div>
+            <!-- Create a new div for displaying movie details -->
+            <div class="movie-category-box" id="moviecategory1"></div>
+            <!-- Create a new div for displaying movie details -->
+            <div class="movie-details-box" id="moviedetails1"></div>
+            <br /><br /><br />
+        </div>
+        <div class="login-box">
+            <h2>Book Your Seats</h2>
+            <form id="seats-form" action="/book-seats"
+                method="POST">
+                <div class="user-box">
+                    <select id="movie-category" name="Movie name">
+                        <option value>Select a movie</option>
+                    </select>
+                </div>
+                <br /><br />
+                <div class="user-box">
+                    <input
+                        type="number"
+                        id="seats-to-book"
+                        name="seats-to-book"
+                        required /><label>Seats to Book</label>
+                </div>
+                <button type="submit" class="login-box-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Submit
+                </button>
+            </form>
+            <br /><br />
+        </div>
+        <script>
+ async function getMovieList() {
+ const movieCategoryDiv = 
+document.getElementById("movie-category");
+ try {
+ //const response = await fetch(`/get-all-movies?category=${'Action'}`);
+ const response = await fetch(`/get-all-movies`);
+ const data = await response.json();
+ displayMovieList(data);
+ } catch (error) {
+ console.error("Error fetching movies:", error);
+ }
+ }
+ async function getMovieDetails(movieName) {
+ console.log(movieName);
+ try {
+ const response = await fetch(`/get-movie-details?name=${movieName}`);
+ const data = await response.json();
+ displayMovieDetails(data, movieName);
+ } catch (error) {
+ console.error("Error fetching movie details:", 
+error);
+ }
+ }
+ function displayMovieDetails(details, moviename) {
+ console.log(details);
+ console.log(moviename);
+ const movieDetailsDiv = 
+document.getElementById("movie-details");
+ movieDetailsDiv.innerHTML = "";
+ if (details) {
+ const description = details["Description"];
+ const actors = details["Actors"];const detailsText = `Description: 
+${description}<br>Actors: ${actors}`;
+ movieDetailsDiv.innerHTML = detailsText;
+ }
+ }
+ function displayMovieList(movies) {
+ const movieCategoryDiv = 
+document.getElementById("movie-category");
+ // movieCategoryDiv.innerHTML = '';
+ if (movies.length === 0) {
+ movieCategoryDiv.textContent = `No movies found`;
+ } else {
+ movies.forEach((movie) => {
+ let option = document.createElement("option");
+ option.setAttribute("value", movie["Movie name"]);
+ let optionText = 
+document.createTextNode(movie["Movie name"]);
+ option.appendChild(optionText);
+ movieCategoryDiv.appendChild(option);
+ });
+ movieCategoryDiv.style.display = "block"; // Show 
+//the box when movies are available
+ }
+ }
+ // Category button code
+ async function getMovies(category) {
+ const movieCategoryDiv = 
+document.getElementById("movie-category1");
+ try {
+ const response = await fetch(`/getmovies?category=${category}`);
+ const data = await response.json();
+ displayMovies(data, category);
+ } catch (error) {
+ console.error("Error fetching movies:", error);
+ }
+ }
+ async function getMovieDetails(movieName) {
+ try {
+ const response = await fetch(`/get-moviedetails?name=${movieName}`);
+ const data = await response.json();displayMovieDetails1(data, movieName);
+ } catch (error) {
+ console.error("Error fetching movie details:", 
+error);
+ }
+ }
+ function displayMovies(movies, category) {
+ const movieCategoryDiv = 
+document.getElementById("movie-category1");
+ movieCategoryDiv.innerHTML = "";
+ if (movies.length === 0) {
+ movieCategoryDiv.textContent = `No movies found for 
+category: ${category}`;
+ } else {
+ const ul = document.createElement("ul");
+ ul.classList.add("movie-list"); // Add a class to 
+// the list
+ movies.forEach((movie) => {
+ const li = document.createElement("li");
+ const movieName = movie["Movie name"];
+ li.textContent = movieName;
+ li.classList.add("movie-list-item"); // Add a 
+// class to the list item
+ li.addEventListener("click", () => {
+ getMovieDetails(movieName);
+ });
+ ul.appendChild(li);
+ });
+ movieCategoryDiv.appendChild(ul);
+ movieCategoryDiv.style.display = "block"; 
+ // Show the box when movies are available
+ }
+ }
+ function displayMovieDetails1(details, movieName) {
+ const movieDetailsDiv = 
+document.getElementById("movie-details1");
+ movieDetailsDiv.innerHTML = "";
+ if (details) {
+ const description = details["Description"];
+ const actors = details["Actors"];
+ const detailsText = `
+ <div><strong>Movie Name:</strong> 
+${movieName}</div>
+ <div><strong>Description:</strong> 
+${description}</div><div><strong>Actors:</strong> ${actors}</div>
+ `;
+ movieDetailsDiv.innerHTML = detailsText;
+ movieDetailsDiv.style.display = "block"; 
+ // Show the box when details are available
+ }
+ }
+ // Call the function to fetch movies when 
+ // the page loads
+ document.addEventListener("DOMContentLoaded", 
+getMovieList());
+ </script>
+    </body>
+</html>
