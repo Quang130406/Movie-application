@@ -1,14 +1,4 @@
 {
-  "name": "movie-application",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "body-parser": "^2.2.0",
     "ejs": "^3.1.10",
@@ -18,5 +8,16 @@
     "mongoose": "^8.19.3",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0"
-  }
+  },
+  "name": "movie_application",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
 }

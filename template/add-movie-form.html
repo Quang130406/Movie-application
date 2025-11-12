@@ -1,168 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, 
-initial-scale=1.0" />
-        <title>Add Movie Details</title>
-        <style>
-html {
-height: 100%;
-}
-body {
-margin: 0;
-padding: 0;
-background: 
-url("https://cdn.pixabay.com/photo/2018/02/27/15/40/background-3185765_1280.jpg");
-/* background: 
-url("https://cdn.pixabay.com/photo/2015/05/13/07/07/playmobil
--765110_1280.jpg"); */
-background-attachment: fixed;
-background-position: relative;
-background-repeat: no-repeat;
-background-size: cover;
-}
-.login-box {
-position: absolute;
-top: 50%;
-left: 50%;
-width: 400px;
-padding: 40px;
-transform: translate(-50%, -50%);
-background: rgba(226, 53, 157, 0.5);
-box-sizing: border-box;
-box-shadow: 0 15px 25px rgba(226, 53, 157, 0.5);
-border-radius: 10px;
-font-size: 20px;
-}
-.login-box h2 {
-margin: 0 0 30px;
-padding: 0;
-color: #520340;
-text-align: center;
-}
-.login-box .user-box {
-position: relative;
-}
-.login-box .user-box input {
-width: 100%;
-padding: 10px 0;
-font-size: 16px;
-color: #fff;
-margin-bottom: 30px;
-border: none;
-border-bottom: 1px solid #fff;
-outline: none;
-background: transparent;
-}.login-box .user-box label {
-position: absolute;
-top: 0;
-left: 0;
-padding: 10px 0;
-font-size: 16px;
-color: #fff;
-pointer-events: none;
-transition: 0.5s;
-}
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
-top: -20px;
-left: 0;
-color: #520340;
-font-size: 12px;
-}
-.login-box-button {
-position: relative;
-display: inline-block;
-padding: 10px 20px;
-color: #ee0754;
-font-size: 16px;
-text-decoration: none;
-text-transform: uppercase;
-overflow: hidden;
-transition: 0.5s;
-margin-top: 40px;
-letter-spacing: 4px;
-background: #520340;
-border-radius: 5px;
-box-shadow: 0 0 5px #520340, 0 0 25px #520340, 0 0 
-50px #520340,
-0 0 100px #520340;
-}
-.login-box-button:hover {
-background: #fff;
-color: #520340;
-}
-</style>
-    </head>
-    <body>
-        <div class="login-box">
-            <h2>Add Movie Details</h2>
-            <form id="movie-form" action="/add-movie"
-                method="POST">
-                <div class="user-box"><input type="text" id="movie-name"
-                        name="Movie name" required />
-                    <label>Movie Name</label>
-                </div>
-                <br />
-                <div class="user-box">
-                    <input type="text" id="screen-no" name="Screen no"
-                        required />
-                    <label>Screen No</label>
-                </div>
-                <br />
-                <div class="user-box">
-                    <input type="text" id="show-time" name="Show time"
-                        required />
-                    <label>Show Time</label>
-                </div>
-                <br />
-                <div class="user-box">
-                    <input
-                        type="number"
-                        id="available-seats"
-                        name="Available Seats"
-                        required />
-                    <label>Available Seats</label>
-                </div>
-                <br />
-                <div class="user-box">
-                    <input type="text" id="actors-names" name="Actors"
-                        required />
-                    <label>Actors Name</label>
-                </div>
-                <br />
-                <div class="user-box">
-                    <input
-                        type="text"
-                        id="movie-description"
-                        name="Description"
-                        required />
-                    <label>Movie Description</label>
-                </div>
-                <br />
-                <div class="user-box">
-                    <!-- <input type="text" id="movieCategory" name="Category" required="">
-<label>Movie Category</label> -->
-                    <select id="movie-Category" name="Category"
-                        required>
-                        <option value disabled selected>Select a
-                            Category</option><option
-                            value="Action">Action</option>
-                        <option value="Comedy">Comedy</option>
-                        <option value="Drama">Drama</option>
-                        <!-- Add more options as required -->
-                    </select>
-                    <br />
-                </div>
-                <button type="submit" class="login-box-button">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    Submit
-                </button>
-            </form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Movie Details</title>
+    <style>
+      html {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: url("https://cdn.pixabay.com/photo/2018/02/27/15/40/background-3185765_1280.jpg");
+        background-attachment: fixed;
+        background-position: relative;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .login-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 400px;
+        padding: 40px;
+        transform: translate(-50%, -50%);
+        background: rgba(226, 53, 157, 0.5);
+        box-sizing: border-box;
+        box-shadow: 0 15px 25px rgba(226, 53, 157, 0.5);
+        border-radius: 10px;
+        font-size: 20px;
+      }
+
+      .login-box h2 {
+        margin: 0 0 30px;
+        padding: 0;
+        color: #520340;
+        text-align: center;
+      }
+
+      .login-box .user-box {
+        position: relative;
+      }
+
+      .login-box .user-box input {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        margin-bottom: 30px;
+        border: none;
+        border-bottom: 1px solid #fff;
+        outline: none;
+        background: transparent;
+      }
+
+      .login-box .user-box label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        pointer-events: none;
+        transition: 0.5s;
+      }
+
+      .login-box .user-box input:focus ~ label,
+      .login-box .user-box input:valid ~ label {
+        top: -20px;
+        left: 0;
+        color: #520340;
+        font-size: 12px;
+      }
+
+      .login-box-button {
+        position: relative;
+        display: inline-block;
+        padding: 10px 20px;
+        color: #ee0754;
+        font-size: 16px;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: 0.5s;
+        margin-top: 40px;
+        letter-spacing: 4px;
+        background: #520340;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #520340, 0 0 25px #520340, 0 0 50px #520340,
+          0 0 100px #520340;
+      }
+
+      .login-box-button:hover {
+        background: #fff;
+        color: #520340;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="login-box">
+      <h2>Add Movie Details</h2>
+      <form id="movie-form" action="/add-movie" method="POST">
+        <div class="user-box">
+          <input type="text" id="movie-name" name="Movie name" required />
+          <label>Movie Name</label>
         </div>
-    </body>
+
+        <div class="user-box">
+          <input type="text" id="screen-no" name="Screen no" required />
+          <label>Screen No</label>
+        </div>
+
+        <div class="user-box">
+          <input type="text" id="show-time" name="Show time" required />
+          <label>Show Time</label>
+        </div>
+
+        <div class="user-box">
+          <input
+            type="number"
+            id="available-seats"
+            name="Available seats"
+            required
+          />
+          <label>Available Seats</label>
+        </div>
+
+        <div class="user-box">
+          <input type="text" id="actors-names" name="Actors" required />
+          <label>Actors Name</label>
+        </div>
+
+        <div class="user-box">
+          <input
+            type="text"
+            id="movie-description"
+            name="Description"
+            required
+          />
+          <label>Movie Description</label>
+        </div>
+
+        <div class="user-box">
+          <select id="movie-Category" name="Category" required>
+            <option value="" disabled selected>Select a Category</option>
+            <option value="Action">Action</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Drama">Drama</option>
+          </select>
+        </div>
+
+        <button type="submit" class="login-box-button">
+          <span></span><span></span><span></span><span></span>Submit
+        </button>
+      </form>
+    </div>
+  </body>
 </html>
