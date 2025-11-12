@@ -7,7 +7,7 @@ const LocalStrategy = require("passport-local");
 const path = require("path"); // Import the path module
 
 // MongoDB connection URI - connect to local MongoDB
-const uri = 'mongodb://127.0.0.1:27017/Movie';
+const uri = 'mongodb+srv://NNQuang:nnq13042006@cluster0.rpet2xt.mongodb.net/?appName=Cluster0&retryWrites=true&w=majority';
 const client = new MongoClient(uri);
 const app = express();
 app.set("view engine", "ejs");
